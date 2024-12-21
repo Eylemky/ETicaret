@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETicaretEntity", "ETicaretEntity\ETicaretEntity.csproj", "{DED00101-2824-41A5-A5BD-3AE55A9222B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETicaretDAL", "ETicaretDAL\ETicaretDAL.csproj", "{A6CDAB2C-1DD6-4322-97B7-301A48D06C33}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DED00101-2824-41A5-A5BD-3AE55A9222B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DED00101-2824-41A5-A5BD-3AE55A9222B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DED00101-2824-41A5-A5BD-3AE55A9222B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DED00101-2824-41A5-A5BD-3AE55A9222B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6CDAB2C-1DD6-4322-97B7-301A48D06C33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6CDAB2C-1DD6-4322-97B7-301A48D06C33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6CDAB2C-1DD6-4322-97B7-301A48D06C33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6CDAB2C-1DD6-4322-97B7-301A48D06C33}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7E7305C-580B-43F3-9B2E-E049CA2DD993}
+	EndGlobalSection
+EndGlobal
