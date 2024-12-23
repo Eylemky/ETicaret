@@ -12,66 +12,67 @@ namespace ETicaret.DAL.Repositories.Concrete
 {
     public class Repository<T> : IRepository<T> where T : BaseEntity
     {
-        readonly WebDbContext _dbContext;
-        public Repository()
+
+        private readonly WebDbContext _context;
+        private readonly DbSet<T> _dbSet;
+        public Repository(WebDbContext context)
         {
-            _dbContext = new WebDbContext();
+            _context = context;
+            _dbSet = context.Set<T>();
         }
 
+        #region Temel CRUD islemleri
 
-        #region CRUD Islemleri
-        public int Create(T entity)
+        public async Task<IEnumerable<T>> GetAllAsync() => await _dbSet.ToListAsync();
+        public async Task<T> GetByIdAsync(int id) => await _dbSet.FindAsync(id);
+        public async Task AddAsync(T entity)
         {
-            _dbContext.Set<T>().Add(entity);
-            return _dbContext.SaveChanges();
+            await _dbSet.AddAsync(entity);
+            await _context.SaveChangesAsync();
         }
-
-        public int Update(T entity)
+        public async Task UpdateAsync(T entity)
         {
-            _dbContext.Set<T>().Update(entity);
-            return _dbContext.SaveChanges();
+            _dbSet.Update(entity);
+            await _context.SaveChangesAsync();
         }
-        public int Delete(T entity)
+        public async Task DeleteAsync(int id)
         {
-            _dbContext.Set<T>().Remove(entity);
-            return _dbContext.SaveChanges();
+            var entity = await _dbSet.FindAsync(id);
+            if (entity != null)
+            {
+                _dbSet.Remove(entity);
+                await _context.SaveChangesAsync();
+            }
         }
         #endregion
 
-
-        #region Select Metodlari
-        public T? GetById(int id)
+        #region Dinamik Sorgular
+        public async Task<T> GetAsync(Expression<Func<T, bool>> predicate)
         {
-            return _dbContext.Set<T>().Find(id);
-
+            return await _dbSet.FirstOrDefaultAsync(predicate);
         }
 
-        public T? Get(Expression<Func<T, bool>> predicate)
+        public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> predicate = null)
         {
-            return _dbContext.Set<T>().FirstOrDefault(predicate);
+            return predicate == null
+                ? await _dbSet.ToListAsync()
+                : await _dbSet.Where(predicate).ToListAsync();
         }
+        #endregion
 
-        public List<T>? GetAll(Expression<Func<T, bool>> predicate = null)
+        #region iliski tablolarla birlikte veri çekme
+        public async Task<IEnumerable<T>> GetAllIncludeAsync(Expression<Func<T, bool>> predicate = null, params Expression<Func<T, object>>[] includes)
         {
-            if (predicate != null)
+            IQueryable<T> query = _dbSet;
+
+            foreach (var include in includes)
             {
-                return _dbContext.Set<T>().Where(predicate).ToList();
+                query = query.Include(include);
             }
-            return _dbContext.Set<T>().ToList();
 
-            //return predicate == null ? _dbContext.Set<T>().ToList() : _dbContext.Set<T>().Where(predicate).ToList();
-
-        }
-
-        public IQueryable<T>? GetAllInclude(Expression<Func<T, bool>> predicate = null,
-            params Expression<Func<T, object>>[] include)
-        {
-            IQueryable<T> query = _dbContext.Set<T>();
-            if (predicate != null)
-            {
-                query = _dbContext.Set<T>().Where(predicate);
-            }
-            return include.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
+            return predicate == null
+                ? await query.ToListAsync()
+                : await query.Where(predicate).ToListAsync();
         }
         #endregion
     }

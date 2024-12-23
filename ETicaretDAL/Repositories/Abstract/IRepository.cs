@@ -1,4 +1,5 @@
 ﻿using ETicaret.Entities.Entities.Abstract;
+using ETicaretEntity.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +12,21 @@ namespace ETicaret.DAL.Repositories.Abstract
 {
     public interface IRepository<T> where T : BaseEntity
     {
-        public int Create(T entity);
-        public int Update(T entity);
-        public int Delete(T entity);
+        #region Temel CRUD islemleri
+        Task<IEnumerable<T>> GetAllAsync();
+        Task<T> GetByIdAsync(int id);
+        Task AddAsync(T entity);
+        Task UpdateAsync(T entity);
+        Task DeleteAsync(int id);
+        #endregion
+        
+        #region Dinamik Sorgular
+        Task<T> GetAsync(Expression<Func<T, bool>> predicate);
+        Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> predicate = null);
+        #endregion
 
-        public T? GetById(int id);
-        public T? Get(Expression<Func<T, bool>> predicate);
-        public List<T>? GetAll(Expression<Func<T, bool>> predicate = null);
-
-        public IQueryable<T>? GetAllInclude(Expression<Func<T, bool>> predicate = null
-            , params Expression<Func<T, object>>[] include);
-
+        # region iliski tablolarla birlikte veri çekme
+        Task<IEnumerable<T>> GetAllIncludeAsync(Expression<Func<T, bool>> predicate = null, params Expression<Func<T, object>>[] includes);
+        #endregion
     }
 }

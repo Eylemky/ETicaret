@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Managers\Abstract\" />
-    <Folder Include="Managers\Concrete\" />
+    <ProjectReference Include="..\ETicaretDAL\ETicaretDAL.csproj" />
+    <ProjectReference Include="..\ETicaretEntity\ETicaretEntity.csproj" />
   </ItemGroup>
 
 </Project>
