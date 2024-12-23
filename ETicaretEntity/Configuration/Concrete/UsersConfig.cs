@@ -25,6 +25,11 @@ namespace ETicaretEntity.Configuration.Concrete
             builder.Property(u => u.PasswordHash).IsRequired().HasMaxLength(256);
             builder.Property(u => u.IsActive).IsRequired();
 
+            builder.Property(c => c.PhoneNumber)
+                   .IsRequired(false)
+                   .HasMaxLength(15);
+
+
             // Navigation Properties
             builder.HasOne(u => u.Role)
                    .WithOne(r => r.User)
@@ -33,6 +38,12 @@ namespace ETicaretEntity.Configuration.Concrete
             builder.HasMany(u => u.Orders)
                    .WithOne(o => o.User)
                    .HasForeignKey(o => o.UserId);
+
+
+            // Navigation Property - One-to-Many Relationship (Customer -> Addresses)
+            builder.HasMany(c => c.Addresses)
+                   .WithOne(a => a.User)
+                   .HasForeignKey(a => a.UserId);
         }
     }
 }

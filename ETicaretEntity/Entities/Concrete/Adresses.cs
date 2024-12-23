@@ -9,7 +9,7 @@ namespace ETicaretEntity.Entities.Concrete
     public class Address
     {
         public int AddressId { get; set; }
-        public int CustomerId { get; set; } // Foreign Key
+        public int UserId { get; set; } // Foreign Key
         public string AddressLine { get; set; }
         public string City { get; set; }
         public string State { get; set; }
@@ -17,6 +17,6 @@ namespace ETicaretEntity.Entities.Concrete
         public string Country { get; set; }
 
         // Navigation Property
-        public Customer Customer { get; set; }
+        public User User { get; set; }
     }
 }

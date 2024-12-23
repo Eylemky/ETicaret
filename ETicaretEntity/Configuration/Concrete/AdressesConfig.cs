@@ -28,9 +28,9 @@ namespace ETicaretEntity.Configuration.Concrete
             builder.Property(a => a.Country).IsRequired().HasMaxLength(50);
 
             // Foreign Key
-            builder.HasOne(a => a.Customer)
+            builder.HasOne(a => a.User)
                    .WithMany(c => c.Addresses)
-                   .HasForeignKey(a => a.CustomerId)
+                   .HasForeignKey(a => a.UserId)
                    .OnDelete(DeleteBehavior.Cascade);
         }
     }

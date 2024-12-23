@@ -12,8 +12,6 @@ using System.Threading.Tasks;
 public class WebDbContext : DbContext
 {
     public DbSet<Address> Addresses { get; set; }
-    public DbSet<Customer> Customers { get; set; }
-
     public DbSet<Banner> Banners { get; set; }
     public DbSet<Log> Logs { get; set; }
     public DbSet<SiteSetting> SiteSettings { get; set; }
