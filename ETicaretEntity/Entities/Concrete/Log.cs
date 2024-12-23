@@ -13,5 +13,9 @@ namespace ETicaretEntity.Entities.Concrete
         public string Message { get; set; }
         public string Details { get; set; }
 
+        // Kullanıcı ile ilişki
+        public int? UserId { get; set; } // İsteğe bağlı bir kullanıcı.
+        public User User { get; set; }
+
     }
 }

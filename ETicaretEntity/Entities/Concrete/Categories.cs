@@ -14,5 +14,7 @@ namespace ETicaretEntity.Entities.Concrete
 
         // Navigation Property
         public ICollection<Product> Products { get; set; }
+        // Banner ile ilişki
+        public ICollection<Banner> Banners { get; set; }
     }
 }

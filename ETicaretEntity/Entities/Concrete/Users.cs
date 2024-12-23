@@ -20,5 +20,7 @@ namespace ETicaretEntity.Entities.Concrete
         public Role Role { get; set; }
         public ICollection<Address> Addresses { get; set; }
         public ICollection<Order> Orders { get; set; }
+        // Log ile ilişki
+        public ICollection<Log> Logs { get; set; }
     }
 }

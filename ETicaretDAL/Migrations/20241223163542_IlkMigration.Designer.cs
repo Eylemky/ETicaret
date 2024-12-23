@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ETicaretDAL.Migrations
 {
     [DbContext(typeof(WebDbContext))]
-    [Migration("20241221143901_IlkMigration")]
+    [Migration("20241223163542_IlkMigration")]
     partial class IlkMigration
     {
         /// <inheritdoc />
@@ -62,9 +62,6 @@ namespace ETicaretDAL.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<string>("PostalCode")
                         .IsRequired()
                         .HasMaxLength(10)
@@ -75,9 +72,12 @@ namespace ETicaretDAL.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("AddressId");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Addresses");
                 });
@@ -89,6 +89,9 @@ namespace ETicaretDAL.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BannerId"));
+
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
@@ -111,6 +114,8 @@ namespace ETicaretDAL.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("BannerId");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("Title")
                         .HasDatabaseName("IX_Banners_Title");
@@ -139,38 +144,6 @@ namespace ETicaretDAL.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("ETicaretEntity.Entities.Concrete.Customer", b =>
-                {
-                    b.Property<int>("CustomerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerId"));
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.HasKey("CustomerId");
-
-                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("ETicaretEntity.Entities.Concrete.Log", b =>
@@ -205,10 +178,15 @@ namespace ETicaretDAL.Migrations
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GETDATE()");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("LogType")
                         .HasDatabaseName("IX_Logs_LogType");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Logs");
                 });
@@ -481,6 +459,10 @@ namespace ETicaretDAL.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
+                    b.Property<string>("PhoneNumber")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
@@ -517,13 +499,33 @@ namespace ETicaretDAL.Migrations
 
             modelBuilder.Entity("ETicaretEntity.Entities.Concrete.Address", b =>
                 {
-                    b.HasOne("ETicaretEntity.Entities.Concrete.Customer", "Customer")
+                    b.HasOne("ETicaretEntity.Entities.Concrete.User", "User")
                         .WithMany("Addresses")
-                        .HasForeignKey("CustomerId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Customer");
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ETicaretEntity.Entities.Concrete.Banner", b =>
+                {
+                    b.HasOne("ETicaretEntity.Entities.Concrete.Category", "Category")
+                        .WithMany("Banners")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("ETicaretEntity.Entities.Concrete.Log", b =>
+                {
+                    b.HasOne("ETicaretEntity.Entities.Concrete.User", "User")
+                        .WithMany("Logs")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ETicaretEntity.Entities.Concrete.Order", b =>
@@ -597,9 +599,9 @@ namespace ETicaretDAL.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("ETicaretEntity.Entities.Concrete.Customer", b =>
+            modelBuilder.Entity("ETicaretEntity.Entities.Concrete.Category", b =>
                 {
-                    b.Navigation("Addresses");
+                    b.Navigation("Banners");
                 });
 
             modelBuilder.Entity("ETicaretEntity.Entities.Concrete.Order", b =>
@@ -629,6 +631,10 @@ namespace ETicaretDAL.Migrations
 
             modelBuilder.Entity("ETicaretEntity.Entities.Concrete.User", b =>
                 {
+                    b.Navigation("Addresses");
+
+                    b.Navigation("Logs");
+
                     b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618

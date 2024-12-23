@@ -42,6 +42,11 @@ namespace ETicaretEntity.Configuration.Concrete
             // Index
             builder.HasIndex(l => l.LogType)
                    .HasDatabaseName("IX_Logs_LogType");
+
+            builder.HasOne(l => l.User) // Kullanıcı ile ilişki
+                   .WithMany(u => u.Logs)
+                   .HasForeignKey(l => l.UserId)
+                   .OnDelete(DeleteBehavior.SetNull); // Kullanıcı silinirse log kalır
         }
     }
 }

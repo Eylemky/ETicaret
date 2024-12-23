@@ -38,6 +38,11 @@ namespace ETicaretEntity.Configuration.Concrete
             // Opsiyonel: Veritabanı için ek ayarlar (örneğin: Index)
             builder.HasIndex(b => b.Title)
                    .HasDatabaseName("IX_Banners_Title");
+
+            builder.HasOne(b => b.Category) // İlişki
+                    .WithMany(c => c.Banners)
+                    .HasForeignKey(b => b.CategoryId)
+                    .OnDelete(DeleteBehavior.Cascade); // Kategori silinirse Banner da silinir
         }
     }
 }

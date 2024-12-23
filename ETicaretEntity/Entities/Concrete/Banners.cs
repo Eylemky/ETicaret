@@ -14,5 +14,9 @@ namespace ETicaretEntity.Entities.Concrete
         public string ImageUrl { get; set; }
         public string RedirectUrl { get; set; }
         public bool IsActive { get; set; } = true;
+
+        // İlişki
+        public int? CategoryId { get; set; } // Banner'ın isteğe bağlı bir kategoriye bağlı olması.
+        public Category Category { get; set; }
     }
 }
