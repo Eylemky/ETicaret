@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ETicaretEntity.Entities.Concrete;
+using ETicaret.Entities.Configuration.Abstract;
 
 namespace ETicaretEntity.Configuration.Concrete
 {
-    public class OrderConfig : IEntityTypeConfiguration<Order>
+    public class OrderConfig : BaseConfig<Order>
     {
         public void Configure(EntityTypeBuilder<Order> builder)
         {

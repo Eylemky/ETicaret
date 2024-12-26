@@ -15,7 +15,6 @@ namespace ETicaretEntity.Configuration.Concrete
         public void Configure(EntityTypeBuilder<Address> builder)
         {
             
-
             // Primary Key
             builder.HasKey(a => a.AddressId);
 

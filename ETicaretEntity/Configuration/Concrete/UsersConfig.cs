@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ETicaretEntity.Entities.Concrete;
+using ETicaret.Entities.Configuration.Abstract;
 
 namespace ETicaretEntity.Configuration.Concrete
 {
-    public class UsersConfig : IEntityTypeConfiguration<User>
+    public class UsersConfig : BaseConfig<User>
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {

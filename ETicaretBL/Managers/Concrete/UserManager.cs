@@ -38,9 +38,6 @@ namespace ETicaretBL.Managers.Concrete
 
             await _userRepository.UpdateAsync(user);
         }
-    
-       
-        
     }
 
 }
