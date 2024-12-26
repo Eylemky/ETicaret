@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace ETicaret.BL.Services
 {
-    public class ProductService : IProductService
+    public class ProductManager : IProductManager
     {
         private readonly IRepository<Product> _repository;
 
-        public ProductService(IRepository<Product> repository)
+        public ProductManager(IRepository<Product> repository)
         {
             _repository = repository;
         }

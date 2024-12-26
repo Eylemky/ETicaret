@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ETicaret.BL.Services
 {
-    public interface IProductService
+    public interface IProductManager
     {
         Task<List<Product>> GetAllProductsAsync();
         Task AddProductAsync(Product product);
