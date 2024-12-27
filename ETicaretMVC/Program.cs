@@ -1,3 +1,6 @@
+using ETicaretMVC.Extensions;
+using Microsoft.EntityFrameworkCore;
+
 namespace ETicaretMVC
 {
     public class Program
@@ -8,6 +11,13 @@ namespace ETicaretMVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            #region DbContext Registiration
+            var constr = builder.Configuration.GetConnectionString("Ticari");
+            builder.Services.AddDbContext<WebDbContext>(options => options.UseSqlServer(constr));
+            #endregion
+
+            builder.Services.AddTicariService();
 
             var app = builder.Build();
 
