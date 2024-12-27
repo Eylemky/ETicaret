@@ -6,15 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ETicaretEntity.Entities.Concrete;
+using ETicaret.Entities.Configuration.Abstract;
 
 namespace ETicaretEntity.Configuration.Concrete
 {
-    public class RoleConfig : IEntityTypeConfiguration<Role>
+    public class RoleConfig : BaseConfig<Role>
     {
         public void Configure(EntityTypeBuilder<Role> builder)
         {
             // Id anahtar olarak tanımlanır
-            builder.HasKey(r => r.RoleId);
+            builder.HasKey(r => r.Id);
 
             // Diğer alanlar
             builder.Property(r => r.RoleName).IsRequired().HasMaxLength(100);
