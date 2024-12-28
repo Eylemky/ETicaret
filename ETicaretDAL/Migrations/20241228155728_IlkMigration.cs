@@ -62,13 +62,15 @@ namespace ETicaretDAL.Migrations
                 name: "Roles",
                 columns: table => new
                 {
-                    RoleId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    RoleName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Roles", x => x.RoleId);
+                    table.PrimaryKey("PK_Roles", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -159,6 +161,9 @@ namespace ETicaretDAL.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RoleId = table.Column<int>(type: "int", nullable: false),
+                    Ad = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Soyad = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    TcNo = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
@@ -174,7 +179,7 @@ namespace ETicaretDAL.Migrations
                         name: "FK_Users_Roles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "Roles",
-                        principalColumn: "RoleId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -382,6 +387,12 @@ namespace ETicaretDAL.Migrations
                 name: "IX_Users_RoleId",
                 table: "Users",
                 column: "RoleId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_TcNo",
+                table: "Users",
+                column: "TcNo",
                 unique: true);
         }
 

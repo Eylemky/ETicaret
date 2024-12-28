@@ -10,5 +10,16 @@ namespace ETicaretMVC.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> User()
+        {
+            // Asenkron işlemi await ile alıp
+            var users = await userManager.GetAllIncludeAsync(null, p => p.Role);
+
+            // Sonucu listeye dönüştür
+            var userList = users.ToList();
+            return View(userList);
+        }
     }
 }

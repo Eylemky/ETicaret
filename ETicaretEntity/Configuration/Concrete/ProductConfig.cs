@@ -10,7 +10,7 @@ using ETicaret.Entities.Configuration.Abstract;
 
 namespace ETicaretEntity.Configuration.Concrete
 {
-    public class ProductConfig : BaseConfig<Product>
+    public class ProductConfig : IEntityTypeConfiguration<Product>
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {

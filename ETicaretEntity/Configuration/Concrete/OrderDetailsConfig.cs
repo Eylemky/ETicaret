@@ -10,7 +10,7 @@ using ETicaret.Entities.Configuration.Abstract;
 
 namespace ETicaretEntity.Configuration.Concrete
 {
-    public class OrderDetailsConfig : BaseConfig<OrderDetail>
+    public class OrderDetailsConfig : IEntityTypeConfiguration<OrderDetail>
     {
         public void Configure(EntityTypeBuilder<OrderDetail> builder)
         {

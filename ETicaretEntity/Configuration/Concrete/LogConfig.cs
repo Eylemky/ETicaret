@@ -10,7 +10,7 @@ using ETicaret.Entities.Configuration.Abstract;
 
 namespace ETicaretEntity.Configuration.Concrete
 {
-    public class LogConfig :BaseConfig<Log> 
+    public class LogConfig : IEntityTypeConfiguration<Log> 
     {
         public void Configure(EntityTypeBuilder<Log> builder)
         {

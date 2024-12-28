@@ -389,18 +389,24 @@ namespace ETicaretDAL.Migrations
 
             modelBuilder.Entity("ETicaretEntity.Entities.Concrete.Role", b =>
                 {
-                    b.Property<int>("RoleId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoleId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("RoleName")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("RoleId");
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Roles");
                 });
@@ -440,6 +446,11 @@ namespace ETicaretDAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Ad")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -463,6 +474,16 @@ namespace ETicaretDAL.Migrations
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Soyad")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("TcNo")
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
+
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
@@ -474,6 +495,9 @@ namespace ETicaretDAL.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("RoleId")
+                        .IsUnique();
+
+                    b.HasIndex("TcNo")
                         .IsUnique();
 
                     b.ToTable("Users");

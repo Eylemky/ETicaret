@@ -10,7 +10,7 @@ using ETicaret.Entities.Configuration.Abstract;
 
 namespace ETicaretEntity.Configuration.Concrete
 {
-    public class UsersConfig : BaseConfig<User>
+    public class UsersConfig : IEntityTypeConfiguration<User>
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
@@ -20,16 +20,21 @@ namespace ETicaretEntity.Configuration.Concrete
             // RoleId Foreign Key olarak tanımlanır
             builder.Property(u => u.RoleId).IsRequired();
 
-            // Diğer alanlar
+
+            builder.Property(p => p.Ad).HasMaxLength(50);
+            builder.Property(p => p.Soyad).HasMaxLength(50);
             builder.Property(u => u.UserName).IsRequired().HasMaxLength(50);
             builder.Property(u => u.Email).IsRequired().HasMaxLength(100);
             builder.Property(u => u.PasswordHash).IsRequired().HasMaxLength(256);
+
+            builder.Property(p => p.TcNo) .HasMaxLength(11);
+            builder.HasIndex(p => p.TcNo).IsUnique();
+
             builder.Property(u => u.IsActive).IsRequired();
 
             builder.Property(c => c.PhoneNumber)
                    .IsRequired(false)
                    .HasMaxLength(15);
-
 
             // Navigation Properties
             builder.HasOne(u => u.Role)
@@ -39,7 +44,6 @@ namespace ETicaretEntity.Configuration.Concrete
             builder.HasMany(u => u.Orders)
                    .WithOne(o => o.User)
                    .HasForeignKey(o => o.UserId);
-
 
             // Navigation Property - One-to-Many Relationship (Customer -> Addresses)
             builder.HasMany(c => c.Addresses)

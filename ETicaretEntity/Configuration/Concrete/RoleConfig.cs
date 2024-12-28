@@ -10,7 +10,7 @@ using ETicaret.Entities.Configuration.Abstract;
 
 namespace ETicaretEntity.Configuration.Concrete
 {
-    public class RoleConfig : BaseConfig<Role>
+    public class RoleConfig : IEntityTypeConfiguration<Role>
     {
         public void Configure(EntityTypeBuilder<Role> builder)
         {
