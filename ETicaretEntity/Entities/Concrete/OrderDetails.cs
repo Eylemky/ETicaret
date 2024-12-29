@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ETicaretEntity.Entities.Concrete
 {
-    public class OrderDetail : BaseEntity
+    public class OrderDetail 
     {
         public int OrderDetailId { get; set; }
         public int OrderId { get; set; } // Foreign Key
