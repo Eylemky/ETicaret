@@ -6,6 +6,7 @@ namespace ETicaretMVC.Controllers
 {
     public class AccountController(IManager<Role> roleManager, IManager<User> userManager) : Controller
     {
+       
         public IActionResult Index()
         {
             return View();
@@ -20,6 +21,20 @@ namespace ETicaretMVC.Controllers
             // Sonucu listeye dönüştür
             var userList = users.ToList();
             return View(userList);
+        }
+
+        [HttpPost]
+        public IActionResult Login(string email, string password)
+        {
+            var user = userManager.GetUserByEmail(email);
+            if (user != null && user.Password == password)
+            {
+                // Session işlemleri yapılabilir
+                return RedirectToAction("Index", "Home");
+            }
+
+            ViewBag.ErrorMessage = "Invalid credentials";
+            return View();
         }
     }
 }

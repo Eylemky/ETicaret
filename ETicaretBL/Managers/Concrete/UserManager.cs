@@ -38,6 +38,11 @@ namespace ETicaretBL.Managers.Concrete
 
             await _userRepository.UpdateAsync(user);
         }
+
+        public User GetUserByEmail(string email)
+        {
+            return _context.Users.FirstOrDefault(u => u.Email == email);
+        }
     }
 
 }

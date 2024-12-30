@@ -14,5 +14,6 @@ namespace ETicaretBL.Managers.Abstract
         Task AddAsync(User user);
         Task UpdateAsync(User user);
         Task DeleteAsync(int id);
+        Task GetUserByEmail(string email);
     }
 }
