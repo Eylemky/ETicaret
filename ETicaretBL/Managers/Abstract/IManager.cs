@@ -10,6 +10,6 @@ namespace ETicaretBL.Managers.Abstract
 {
     public interface IManager<T> : IRepository<T> where T : BaseEntity
     {
-        
+
     }
 }

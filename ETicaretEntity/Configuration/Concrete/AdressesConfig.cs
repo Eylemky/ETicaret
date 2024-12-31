@@ -23,8 +23,6 @@ namespace ETicaretEntity.Configuration.Concrete
             builder.Property(a => a.AddressLine).IsRequired().HasMaxLength(200);
             builder.Property(a => a.City).IsRequired().HasMaxLength(50);
             builder.Property(a => a.State).HasMaxLength(50);
-            builder.Property(a => a.PostalCode).IsRequired().HasMaxLength(10);
-            builder.Property(a => a.Country).IsRequired().HasMaxLength(50);
 
             // Foreign Key
             builder.HasOne(a => a.User)

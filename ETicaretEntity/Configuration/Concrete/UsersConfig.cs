@@ -20,15 +20,11 @@ namespace ETicaretEntity.Configuration.Concrete
             // RoleId Foreign Key olarak tanımlanır
             builder.Property(u => u.RoleId).IsRequired();
 
-
-            builder.Property(p => p.Ad).HasMaxLength(50);
-            builder.Property(p => p.Soyad).HasMaxLength(50);
-            builder.Property(u => u.UserName).IsRequired().HasMaxLength(50);
+            builder.Property(p => p.Name).HasMaxLength(50);
+            builder.Property(p => p.Surname).HasMaxLength(50);
+            
             builder.Property(u => u.Email).IsRequired().HasMaxLength(100);
             builder.Property(u => u.PasswordHash).IsRequired().HasMaxLength(256);
-
-            builder.Property(p => p.TcNo) .HasMaxLength(11);
-            builder.HasIndex(p => p.TcNo).IsUnique();
 
             builder.Property(u => u.IsActive).IsRequired();
 
@@ -49,6 +45,15 @@ namespace ETicaretEntity.Configuration.Concrete
             builder.HasMany(c => c.Addresses)
                    .WithOne(a => a.User)
                    .HasForeignKey(a => a.UserId);
+
+            // CreatedDate varsayılan olarak şu anki tarih olarak ayarlanır
+            builder.Property(e => e.CreatedDate).ValueGeneratedOnAdd().
+                HasDefaultValueSql("GETDATE()");
+
+            // UpdatedDate, varsayılan olarak null ve güncellenebilir olacak şekilde ayarlanır
+            builder.Property(e => e.UpdatedDate)
+                .IsRequired(false);
         }
+
     }
 }

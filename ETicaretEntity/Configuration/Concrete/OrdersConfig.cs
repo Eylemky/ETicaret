@@ -31,6 +31,14 @@ namespace ETicaretEntity.Configuration.Concrete
             builder.Property(o => o.Status).IsRequired().HasMaxLength(20);
             builder.Property(o => o.ShippingAddress).IsRequired().HasMaxLength(250);
             builder.Property(o => o.PaymentMethod).IsRequired().HasMaxLength(50);
+
+            // CreatedDate varsayılan olarak şu anki tarih olarak ayarlanır
+            builder.Property(e => e.CreatedDate).ValueGeneratedOnAdd().
+                HasDefaultValueSql("GETDATE()");
+
+            // UpdatedDate, varsayılan olarak null ve güncellenebilir olacak şekilde ayarlanır
+            builder.Property(e => e.UpdatedDate)
+                .IsRequired(false);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace ETicaretEntity.Configuration.Concrete
             builder.HasKey(c => c.CategoryId);
 
             // Diğer alanlar
-            builder.Property(c => c.Name).IsRequired().HasMaxLength(100);
+            builder.Property(c => c.CategoryName).IsRequired().HasMaxLength(100);
             builder.Property(c => c.Description).HasMaxLength(500);
 
             // Navigation Property

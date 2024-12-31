@@ -16,7 +16,8 @@ namespace ETicaretEntity.Entities.Concrete
         public int Stock { get; set; }
         public int CategoryId { get; set; } // Foreign Key
         public bool IsActive { get; set; } = true;
-
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime? UpdatedDate { get; set; }
 
         // Navigation Property
         public ICollection<Category> Categories { get; set; }

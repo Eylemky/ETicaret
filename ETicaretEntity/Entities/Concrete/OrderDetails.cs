@@ -14,9 +14,11 @@ namespace ETicaretEntity.Entities.Concrete
         public int ProductId { get; set; } // Foreign Key
         public int Quantity { get; set; }
         public decimal UnitPrice { get; set; }
+        
 
         // Navigation Properties
         public Order Order { get; set; }
+        public ICollection<Address> Addresses { get; set; }
         public Product Product { get; set; }
     }
 }

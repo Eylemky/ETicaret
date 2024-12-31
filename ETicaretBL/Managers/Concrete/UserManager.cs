@@ -12,7 +12,7 @@ namespace ETicaretBL.Managers.Concrete
     public class UserManager : IUserManager
     {
         private readonly IRepository<User> _userRepository;
-
+        private readonly WebDbContext _context;
         public UserManager(IRepository<User> userRepository)
         {
             _userRepository = userRepository;
@@ -42,6 +42,11 @@ namespace ETicaretBL.Managers.Concrete
         public User GetUserByEmail(string email)
         {
             return _context.Users.FirstOrDefault(u => u.Email == email);
+        }
+
+        Task IUserManager.GetUserByEmail(string email)
+        {
+            throw new NotImplementedException();
         }
     }
 

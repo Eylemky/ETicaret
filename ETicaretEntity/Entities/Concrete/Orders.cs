@@ -15,6 +15,9 @@ namespace ETicaretEntity.Entities.Concrete
         public string Status { get; set; } // Pending, Completed, Canceled
         public string ShippingAddress { get; set; }
         public string PaymentMethod { get; set; } // CreditCard, PayPal, etc.
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime? UpdatedDate { get; set; }
+
 
         // Navigation Property
         public User User { get; set; }

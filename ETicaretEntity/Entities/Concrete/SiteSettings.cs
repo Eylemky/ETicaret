@@ -11,5 +11,6 @@ namespace ETicaretEntity.Entities.Concrete
         public int SiteSettingId { get; set; }
         public string Key { get; set; }
         public string Value { get; set; }
+        public DateTime? UpdatedDate { get; set; }
     }
 }

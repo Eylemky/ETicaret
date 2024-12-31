@@ -39,6 +39,13 @@ namespace ETicaretEntity.Configuration.Concrete
             builder.HasMany(p => p.OrderDetails)
                    .WithOne(od => od.Product)
                    .HasForeignKey(od => od.ProductId);
+            // CreatedDate varsayılan olarak şu anki tarih olarak ayarlanır
+            builder.Property(e => e.CreatedDate).ValueGeneratedOnAdd().
+                HasDefaultValueSql("GETDATE()");
+
+            // UpdatedDate, varsayılan olarak null ve güncellenebilir olacak şekilde ayarlanır
+            builder.Property(e => e.UpdatedDate)
+                .IsRequired(false);
         }
     }
 }

@@ -17,13 +17,6 @@ namespace ETicaret.Entities.Configuration.Abstract
             // Id anahtar olarak tanımlanır
             builder.HasKey(e => e.Id);
 
-            // CreatedDate varsayılan olarak şu anki tarih olarak ayarlanır
-            builder.Property(e => e.CreatedDate).ValueGeneratedOnAdd().
-                HasDefaultValueSql("GETDATE()");
-
-            // UpdatedDate, varsayılan olarak null ve güncellenebilir olacak şekilde ayarlanır
-            builder.Property(e => e.UpdatedDate)
-                .IsRequired(false);
         }
     }
 

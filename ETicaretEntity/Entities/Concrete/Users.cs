@@ -10,21 +10,18 @@ namespace ETicaretEntity.Entities.Concrete
     public class User : BaseEntity
     {
         public int RoleId { get; set; }
-        public string Ad { get; set; }
-        public string Soyad { get; set; }
-        public string TcNo { get; set; }
-        public string UserName { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string PasswordHash { get; set; }
-
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime? UpdatedDate { get; set; }
         public bool IsActive { get; set; } = true;
 
         // Navigation Properties
         public Role Role { get; set; }
         public ICollection<Address> Addresses { get; set; }
         public ICollection<Order> Orders { get; set; }
-        // Log ile ilişki
-        public ICollection<Log> Logs { get; set; }
     }
 }

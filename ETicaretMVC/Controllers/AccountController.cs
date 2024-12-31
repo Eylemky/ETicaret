@@ -23,18 +23,18 @@ namespace ETicaretMVC.Controllers
             return View(userList);
         }
 
-        [HttpPost]
-        public IActionResult Login(string email, string password)
-        {
-            var user = userManager.GetUserByEmail(email);
-            if (user != null && user.Password == password)
-            {
-                // Session işlemleri yapılabilir
-                return RedirectToAction("Index", "Home");
-            }
+        //[HttpPost]
+        //public IActionResult Login(string email, string password)
+        //{
+        //    var user = userManager.GetUserByEmail(email);
+        //    if (user != null && user.Password == password)
+        //    {
+        //        // Oturum açma işlemi
+        //        return RedirectToAction("Index", "Home");
+        //    }
 
-            ViewBag.ErrorMessage = "Invalid credentials";
-            return View();
-        }
+        //    ViewBag.ErrorMessage = "Invalid credentials";
+        //    return View();
+        //}
     }
 }

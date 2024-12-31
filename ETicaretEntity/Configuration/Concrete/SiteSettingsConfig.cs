@@ -31,6 +31,10 @@ namespace ETicaretEntity.Configuration.Concrete
             builder.HasIndex(s => s.Key)
                    .IsUnique()
                    .HasDatabaseName("IX_SiteSettings_Key");
+
+            // UpdatedDate, varsayılan olarak null ve güncellenebilir olacak şekilde ayarlanır
+            builder.Property(e => e.UpdatedDate)
+                .IsRequired(false);
         }
     }
 }

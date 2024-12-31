@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ETicaret.Entities.Entities.Abstract
+namespace ETicaretEntity.Seeds
 {
-    public abstract class BaseEntity
+    internal class SiteSettingSeed
     {
-        public int Id { get; set; }
-       
     }
 }
