@@ -11,7 +11,7 @@ namespace ETicaretEntity.Entities.Concrete
     {
         public string RoleName { get; set; }
 
-        // Navigation Property
-        public User User { get; set; }
+        // Bir rol birden fazla kullanıcıya sahip olabilir
+        public ICollection<User> User { get; set; }
     }
 }

@@ -17,13 +17,16 @@ namespace ETicaretEntity.Configuration.Concrete
             // Id anahtar olarak tanımlanır
             builder.HasKey(r => r.Id);
 
-            // Diğer alanlar
-            builder.Property(r => r.RoleName).IsRequired().HasMaxLength(100);
+            // Name özelliği zorunlu ve maksimum uzunluğu 50 karakter
+            builder.Property(r => r.RoleName)
+                   .IsRequired()
+                   .HasMaxLength(50);
 
-            // Navigation Property
-            builder.HasOne(r => r.User)
-                   .WithOne(u => u.Role)
-                   .HasForeignKey<User>(u => u.RoleId);
+            // Role ile User ilişkisi (Bire-çok ilişki)
+            builder.HasMany(r => r.User) // Role sınıfında Users koleksiyonu tanımlı olmalı
+                   .WithOne(u => u.Role) // User sınıfında Role tanımlı olmalı
+                   .HasForeignKey(u => u.RoleId)
+                   .OnDelete(DeleteBehavior.Restrict); // Silme davranışı düzenlendi
         }
     }
 }
