@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace ETicaret.WebAPI.Controllers
+namespace ETicaretWebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]

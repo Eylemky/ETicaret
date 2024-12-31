@@ -1,4 +1,4 @@
-namespace ETicaret.WebAPI
+namespace ETicaretWebAPI
 {
     public class WeatherForecast
     {

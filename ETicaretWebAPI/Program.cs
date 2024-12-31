@@ -3,7 +3,7 @@ using ETicaret.BL.Services;
 using ETicaret.DAL.Repositories.Abstract;
 using ETicaret.DAL.Repositories.Concrete;
 
-namespace ETicaret.WebAPI
+namespace ETicaretWebAPI
 {
     public class Program
     {
@@ -21,7 +21,7 @@ namespace ETicaret.WebAPI
             // Dependency Injection
             builder.Services.AddDbContext<WebDbContext>();
             builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddScoped<IProductManager, ProductManager>();
 
             builder.Services.AddControllers();
 
@@ -37,6 +37,7 @@ namespace ETicaret.WebAPI
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+
 
             app.MapControllers();
 

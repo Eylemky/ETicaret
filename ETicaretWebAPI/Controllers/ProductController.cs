@@ -1,14 +1,14 @@
 ﻿using ETicaret.BL.Services;
-using ETicaret.Entities.Entities.Concrete.ProductManagement;
+using ETicaretEntity.Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
 public class ProductController : ControllerBase
 {
-    private readonly IProductService _productService;
+    private readonly IProductManager _productService;
 
-    public ProductController(IProductService productService)
+    public ProductController(IProductManager productService)
     {
         _productService = productService;
     }
