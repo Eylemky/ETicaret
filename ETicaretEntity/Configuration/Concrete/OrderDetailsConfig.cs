@@ -29,6 +29,6 @@ namespace ETicaretEntity.Configuration.Concrete
             // Diğer alanlar
             builder.Property(od => od.Quantity).IsRequired();
             builder.Property(od => od.UnitPrice).IsRequired().HasColumnType("decimal(18,2)");
-        }
+          }
     }
 }

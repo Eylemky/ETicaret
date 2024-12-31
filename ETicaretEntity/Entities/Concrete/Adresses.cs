@@ -10,7 +10,6 @@ namespace ETicaretEntity.Entities.Concrete
     {
         public int AddressId { get; set; }
         public int UserId { get; set; } // Foreign Key
-        public int OrderDetailId { get; set; } //Foreign Key
         public string AddressLine { get; set; }
         public  string AddressDescription { get; set; }
         public string City { get; set; }
@@ -18,6 +17,5 @@ namespace ETicaretEntity.Entities.Concrete
 
         // Navigation Property
         public User User { get; set; }
-        public ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

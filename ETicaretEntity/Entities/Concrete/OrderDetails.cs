@@ -18,7 +18,6 @@ namespace ETicaretEntity.Entities.Concrete
 
         // Navigation Properties
         public Order Order { get; set; }
-        public ICollection<Address> Addresses { get; set; }
         public Product Product { get; set; }
     }
 }

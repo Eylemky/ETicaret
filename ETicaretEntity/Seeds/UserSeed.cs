@@ -15,84 +15,94 @@ namespace ETicaretEntity.Seeds
         {
             builder.HasData(
 
-            //            new User
-            //            {
-            //                Id = 1,
-            //                Name = "Tom",
-            //                SurName = "Hardy",
-           
-            //                Email = "tomhardy@gmail.com",
-            //                BirthDate = new DateOnly(1977, 9, 15),
-            //                Phone = "+90 555 555 55 55",
-            //                RoleId = 1, //Customer
-            //                Password = "qweasd"
-            //            },
-            //            new User
-            //            {
-            //                Id = 2,
-            //                FirstName = "Furkan",
-            //                LastName = "Yeneroğlu",
-            //                Email = "furkan_yeneroğlu@gmail.com",
-            //                BirthDate = new DateOnly(2002, 12, 17),
-            //                Phone = "+90 555 555 55 44",
-            //                RoleId = 1, //Customer
-            //                Password = "qweasd"
-            //                //Password doğrudan db'ye kaydedilmemeli Hash İşlemleri olmalı
-            //            },
-            //            new User
-            //            {
-            //                Id = 3,
-            //                FirstName = "İrem Nur",
-            //                LastName = "Özyurt",
-            //                Email = "iremozyurt@gmail.com",
-            //                BirthDate = new DateOnly(2002, 10, 21),
-            //                Phone = "+90 555 555 55 34",
-            //                RoleId = 1,
-            //                Password = "qweasd"
-            //            },
-            //            new User
-            //            {
-            //                Id = 4,
-            //                FirstName = "İldem",
-            //                LastName = "Çakıcı",
-            //                Email = "ildemcakici@gmail.com",
-            //                BirthDate = new DateOnly(2005, 10, 04),
-            //                Phone = "+90 555 555 54 34",
-            //                RoleId = 1,
-            //                Password = "qweasd"
-            //            },
-            //            new User
-            //            {
-            //                Id = 5,
-            //                FirstName = "Henry",
-            //                LastName = "Cavill",
-            //                Email = "henrycavill@gmail.com",
-            //                BirthDate = new DateOnly(1983, 05, 05),
-            //                Phone = "+90 555 555 33 55",
-            //                RoleId = 1,
-            //                Password = "qweasd"
-            //            },
-            //            new User
-            //            {
-            //                Id = 6,
-            //                FirstName = "Şevval",
-            //                LastName = "Özdemir",
-            //                Email = "sevval@admin.com",
-            //                BirthDate = new DateOnly(2002, 11, 24),
-            //                Phone = "+90 555 555 51 34",
-            //                RoleId = 2,
-            //                Password = "qweasd"
-            //            },
-            //            new User
-            //            {
-            //                Id = 7,
-            //                FirstName = "Ercan",
-            //                LastName = "Öztürk",
-            //                Email = "ercan@admin.com",
-            //                Phone = "+90 555 555 55 24",
-            //                RoleId = 2,
-            //                Password = "qweasd"
-            //            }
+            new User
+            {
+                Id = 1,
+                Name = "Felix",
+                Surname = "Runtenten",
+                Email = "felixruntenten@gmail.com",
+                PhoneNumber = "+90 555 333 55 33",
+                RoleId = 1, //Customer
+                PasswordHash = "qweasd",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now
+             },
+            new User
+            {
+                Id = 2,
+                Name = "Fahri",
+                Surname = "Feneroğlu",
+                Email = "fahri_feneroğlu@gmail.com",
+                PhoneNumber = "+90 535 555 35 44",
+                RoleId = 1, //Customer
+                PasswordHash = "qweasd1", //PasswordHash doğrudan db'ye kaydedilmemeli Hash İşlemleri olmalı
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now
+
+            },
+            new User
+            {
+                Id = 3,
+                Name = "İrem",
+                Surname = "Çelik",
+                Email = "iremozyurt@gmail.com",
+                PhoneNumber = "+90 555 444 22 34",
+                RoleId = 1,
+                PasswordHash = "qweasd2",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now
+            },
+
+            new User
+            {
+                Id = 4,
+                Name = "Adem",
+                Surname = "Donmez",
+                Email = "ademdonmez@gmail.com",
+                PhoneNumber = "+90 532 625 54 34",
+                RoleId = 1,
+                PasswordHash = "qweasd3",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now
+            },
+
+            new User
+            {
+                Id = 5,
+                Name = "Jush",
+                Surname = "Hutcerson",
+                Email = "jush_hutcersen@gmail.com",
+                PhoneNumber = "+90 555 435 33 55",
+                RoleId = 1,
+                PasswordHash = "qweasd4",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now
+            },
+
+            new User
+            {
+                Id = 6,
+                Name = "Eylem",
+                Surname = "Kaya Donmez",
+                Email = "eylemdonmez@admin.com",
+                PhoneNumber = "+90 555 465 88 22",
+                RoleId = 2,
+                PasswordHash = "qweasdadmin",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now
+            },
+            new User
+            {
+                Id = 7,
+                Name = "Ercan",
+                Surname = "Öztürk",
+                Email = "ercanozturk@admin.com",
+                PhoneNumber = "+90 555 425 55 24",
+                RoleId = 2,
+                PasswordHash ="qweasdpro",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now
+            }
             );
         }
     }

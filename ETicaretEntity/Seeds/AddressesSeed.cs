@@ -13,15 +13,8 @@ namespace ETicaretEntity.Seeds
     {
         public void Configure(EntityTypeBuilder<Address> builder)
         {
-        //     public int AddressId { get; set; }
-        //public int UserId { get; set; } // Foreign Key
-        //public string AddressLine { get; set; }
-        //public string City { get; set; }
-        //public string State { get; set; }
-        //public string PostalCode { get; set; }
-        //public string Country { get; set; }
 
-        builder.HasData(
+            builder.HasData(
 
                 new Address
                 {

@@ -25,7 +25,7 @@ namespace ETicaretEntity.Seeds
                 {
                     CategoryId = 2,
                     CategoryName = "Etek",
-                    Description = "Kadın ve Kız Çocuk Giyi"
+                    Description = "Kadın ve Kız Çocuk Giyim"
 
                 },
                 new Category
