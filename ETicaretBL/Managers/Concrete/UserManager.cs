@@ -24,7 +24,7 @@ namespace ETicaretBL.Managers.Concrete
         public async Task AddAsync(User user)
         {
             // İş mantıkları, validasyonlar
-            if (string.IsNullOrWhiteSpace(user.UserName))
+            if (string.IsNullOrWhiteSpace(user.Name))
                 throw new ArgumentException("Username cannot be empty.");
 
             await _userRepository.AddAsync(user);
