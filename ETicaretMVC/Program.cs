@@ -35,9 +35,9 @@ namespace ETicaretMVC
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
             {
                 options.Cookie.Name = "MySiteCookie";
-                options.LoginPath = "/Account/Login";
-                options.LogoutPath = "/Account/Logout";
-                options.Cookie.HttpOnly = true; //Tarayýcýdaki di?er scriptler okuyamasýn diye güvenlik 
+                options.LoginPath = "/Account/Signin";
+                options.LogoutPath = "/Account/Signout";
+                options.Cookie.HttpOnly = true; //Tarayýcýdaki diger scriptler okuyamasýn diye güvenlik 
                 options.Cookie.SameSite = SameSiteMode.Strict; //Baska tarayicilar tarafindan ulasilamasin diye güvenlik önlemi
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
                 options.SlidingExpiration = true; //Herhangi sitede bir hareket oldugunda süreyi 10 dk uzatir.
