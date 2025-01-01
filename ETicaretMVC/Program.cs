@@ -1,4 +1,7 @@
+using AspNetCoreHero.ToastNotification;
 using ETicaretMVC.Extensions;
+using ETicaretMVC.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 namespace ETicaretMVC
@@ -11,10 +14,34 @@ namespace ETicaretMVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddTransient<EmailService>();
+
 
             #region DbContext Registiration
             var constr = builder.Configuration.GetConnectionString("Ticari");
             builder.Services.AddDbContext<WebDbContext>(options => options.UseSqlServer(constr));
+            #endregion
+
+            #region Notify Configuration
+            builder.Services.AddNotyf(p =>
+            {
+                p.Position = NotyfPosition.BottomRight;
+                p.DurationInSeconds = 5;
+                p.IsDismissable = true;
+            });
+            #endregion
+
+            #region Cookie Base Authentication
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                options.Cookie.Name = "MySiteCookie";
+                options.LoginPath = "/Account/Login";
+                options.LogoutPath = "/Account/Logout";
+                options.Cookie.HttpOnly = true; //Tarayýcýdaki di?er scriptler okuyamasýn diye güvenlik 
+                options.Cookie.SameSite = SameSiteMode.Strict; //Baska tarayicilar tarafindan ulasilamasin diye güvenlik önlemi
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+                options.SlidingExpiration = true; //Herhangi sitede bir hareket oldugunda süreyi 10 dk uzatir.
+            });
             #endregion
 
             builder.Services.AddTicariService();
