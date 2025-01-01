@@ -14,6 +14,11 @@ namespace ETicaretMVC.Controllers
     [Authorize]
     public class AccountController(IManager<User> userManager, IManager<Role> roleManager, IManager<User> adminManager, WebDbContext dbContext, INotyfService notyfService) : Controller
     {
+        public IActionResult Account()
+        {
+            // Kullanıcıyı SignIn aksiyonuna yönlendir
+            return RedirectToAction("SignIn", "Auth");
+        }
         public IActionResult Index()
         {
             return View();
