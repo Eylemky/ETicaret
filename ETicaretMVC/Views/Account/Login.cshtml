@@ -1,11 +1,149 @@
-﻿@model LoginVM
+﻿﻿@using ETicaretMVC.Models.ViewModels
+@model LoginVM
+
+@{
+    Layout = null;
+}
+
+<style>
+    /* Genel Stil */
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f9;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-box {
+        width: 380px; /* Form genişliği */
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9); /* Arkaplan yarı şeffaf */
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .login-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1549477606-43a329b26066?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center;
+            background-size: cover;
+            filter: blur(8px) brightness(0.7); /* Resim silik ve daha karanlık */
+            z-index: -1;
+        }
+
+        .login-box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Siyah yarı şeffaflık */
+            z-index: -2;
+        }
+
+    .login-box-msg {
+        font-size: 1.3em;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    /* Form Elemanları */
+    .input-group {
+        margin-bottom: 15px;
+    }
+
+        .input-group .form-control {
+            width: 100%;
+            height: 40px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 0.95em;
+        }
+
+    .input-group-text {
+        background-color: #e9ecef;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        color: #495057;
+    }
+
+    /* Butonlar */
+    .btn-primary,
+    .btn-danger {
+        width: 100%; /* Butonlar form genişliğiyle aynı olacak */
+        max-width: 340px; /* Buton maksimum genişliği */
+        height: 45px; /* Sabit buton yüksekliği */
+        margin: 5px auto; /* Üst ve alt boşluk */
+        border-radius: 5px;
+        font-size: 1em;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-danger {
+        background-color: #dd4b39;
+        border: none;
+    }
+
+        .btn-danger:hover {
+            background-color: #c23321;
+        }
+
+    /* Sosyal Medya Butonları */
+    .social-auth-links {
+        margin: 20px 0;
+    }
+
+        .social-auth-links a {
+            display: block;
+            margin: 5px auto;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.95em;
+            text-align: center;
+            color: #fff;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        /* Sosyal medya butonları içindeki yazıların merkezi hizalanması */
+        .social-auth-links i {
+            margin-right: 10px;
+        }
+
+        .social-auth-links p {
+            margin: 0 0 10px 0;
+        }
+
+</style>
+
 <div class="row">
     <div class="login-box">
-        <div class="login-logo">
-            <a href="#"><b>Admin</b>LTE</a>
-        </div>
         <!-- /.login-logo -->
-
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
@@ -56,10 +194,11 @@
                 <!-- /.social-auth-links -->
 
                 <p class="mb-1">
+                    @*Buraya view eklenecek.*@
                     <a href="forgot-password.html">I forgot my password</a>
                 </p>
                 <p class="mb-0">
-                    <a href="register.html" class="text-center">Register a new membership</a>
+                    <a asp-action="UserInsert" class="text-center">Register a new membership</a>
                 </p>
             </div>
             <!-- /.login-card-body -->
