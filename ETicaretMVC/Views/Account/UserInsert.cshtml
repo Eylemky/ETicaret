@@ -1,0 +1,103 @@
+﻿﻿@using ETicaretMVC.Models.ViewModels
+@model UserInsertVM
+
+<div class="container mt-5">
+
+    <div class="card">
+
+        <div class="card-header">
+            <h3>Kayit Ekrani</h3>
+        </div>
+
+
+        <div class="card-body">
+            <form asp-action="UserInsert" method="post">
+
+                <div class="row">
+                    @* Ekrana bir row atayoruz ve atilan row'u 3 parçaya boluyoruz. 1. parca 2 column dan olusacak label olusacak. Digeri input icin 6 parca ve en son validation mesajlari icin de 4 parça ayiriyoruz*@
+                    <div class="col-2">
+                        <label asp-for=FirstName></label>
+                    </div>
+                    <div class="col-6">
+                        <input asp-for=FirstName />
+                    </div>
+                    <div class="col-4">
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <label asp-for=LastName></label>
+                    </div>
+                    <div class="col-6">
+                        <input asp-for=LastName />
+                    </div>
+                    <div class="col-4">
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-2">
+                        <label asp-for=Email></label>
+                    </div>
+                    <div class="col-6">
+                        <input asp-for=Email />
+                    </div>
+                    <div class="col-4">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <label asp-for=Phone></label>
+                    </div>
+                    <div class="col-6">
+                        <input asp-for=Phone />
+                    </div>
+                    <div class="col-4">
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <label asp-for=Password></label>
+                    </div>
+                    <div class="col-6">
+                        <input asp-for=Password />
+                    </div>
+                    <div class="col-4">
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <label asp-for=Password></label>
+                    </div>
+                    <div class="col-6">
+                        <input asp-for=Password />
+                    </div>
+                    <div class="col-4">
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                
+                <div class="row mt-3">
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+@* Burasi Validation kurallarini işleten kutuphanlerdir *@
+@section Scripts
+{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
